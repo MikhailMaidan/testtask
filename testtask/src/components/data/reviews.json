@@ -1,0 +1,18 @@
+[
+    {
+      "id": 1,
+      "name": "John Doe",
+      "text": "This is an amazing product! Highly recommend."
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "text": "Not bad, but could be improved in some areas."
+    },
+    {
+      "id": 3,
+      "name": "Alice Johnson",
+      "text": "Fantastic! Exceeded my expectations."
+    }
+  ]
+  
