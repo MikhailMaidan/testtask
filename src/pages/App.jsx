@@ -1,5 +1,5 @@
 import React from 'react';
-import ReviewSlider from './components/ReviewSlider.jsx';
+import ReviewSlider from '@/components/ReviewSlider/ReviewSlider.jsx';
 
 function App() {
   return (

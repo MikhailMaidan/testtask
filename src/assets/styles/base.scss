@@ -1,3 +1,27 @@
 @import url(fonts.scss);
 @import url(reset.scss);
 @import url(variables.scss);
+
+/*формулы рассчета идеального пикселя для разных экранов */
+html {
+    font-size: 1px;
+
+    @media (min-width: var(--tablet-min)) {
+        font-size: calc(1vw / 7.68);
+    }
+
+    @media (min-width: var(--laptop-min)) {
+        font-size: calc(1vw / 16.80);
+    }
+
+    @media (min-width: 1680px) {
+        font-size: 1px;
+    }
+}
+
+
+body {
+    font-family: $main-font;
+    background: $main-background-gradient;
+    position: relative; 
+}
