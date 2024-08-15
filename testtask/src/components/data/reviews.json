@@ -1,43 +1,71 @@
 [
-    {
-      "id": 1,
-      "name": "John Doe",
-      "text": "This is an amazing product! Highly recommend."
-    },
-    {
-      "id": 2,
-      "name": "Jane Smith",
-      "text": "Not bad, but could be improved in some areas."
-    },
-    {
-      "id": 3,
-      "name": "Alice Johnson",
-      "text": "Fantastic! Exceeded my expectations."
-    },
-    {
-      "id": 4,
-      "name": "Sir Bloody Darryl",
-      "text": "Bloody terrific."
-    },
-    {
-      "id": 5,
-      "name": "Sir Bloody Darryl",
-      "text": "Bloody terrific."
-    },
-    {
-      "id": 6,
-      "name": "Sir Bloody Darryl",
-      "text": "Bloody terrific."
-    },
-    {
-      "id": 7,
-      "name": "Sir Bloody Darryl",
-      "text": "Bloody terrific."
-    },
-    {
-      "id": 8,
-      "name": "Sir Bloody Darryl",
-      "text": "Bloody terrific."
-    }
-  ]
+  {
+    "id": 1,
+    "name": "Rezan the Redshirt",
+    "text": "This is an amazing product! Highly recommend. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Markus Delrow",
+    "text": "Not bad, but could be improved in some areas. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?",
+    "rating": 3
+  },
+  {
+    "id": 3,
+    "name": "Dragomir",
+    "text": "Fantastic! Exceeded my expectations. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?",
+    "rating": 4
+  },
+  {
+    "id": 4,
+    "name": "Sir Bloody Darryl",
+    "text": "Bloody terrific. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi? ",
+    "rating": 5
+  },
+  {
+    "id": 5,
+    "name": "Safecracker Voltamann",
+    "text": "It was just okay. Nothing special. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?",
+    "rating": 3
+  },
+  {
+    "id": 6,
+    "name": "Ricksaw",
+    "text": "Would not recommend. Poor quality. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?",
+    "rating": 1
+  },
+  {
+    "id": 7,
+    "name": "Number K",
+    "text": "Good, but has room for improvement. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?",
+    "rating": 4
+  },
+  {
+    "id": 8,
+    "name": "Arno the Overgrown",
+    "text": "Decent product for the price. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?",
+    "rating": 3
+  },
+  {
+    "id": 9,
+    "name": "Steve Rambo",
+    "text": "Exceeded my expectations! Five stars. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi? ",
+    "rating": 5
+  },
+  {
+    "id": 10,
+    "name": "Billy Herrington",
+    "text": "Not worth the money. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?",
+    "rating": 2
+  }
+]
+
+
+
+
+
+
+
+
   
