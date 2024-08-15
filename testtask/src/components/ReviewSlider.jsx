@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './ReviewSlider.scss';
 import reviewsData from './data/reviews.json';
 import placeholderImage from '../images/imageProfile.png'; 
@@ -10,8 +10,17 @@ const ReviewSlider = () => {
   const [newReviewName, setNewReviewName] = useState('');
   const [newReviewText, setNewReviewText] = useState('');
   const [newReviewRating, setNewReviewRating] = useState(1);
+  const [maxHeight, setMaxHeight] = useState(0);
+  const reviewsRef = useRef([]);
+  const [fade, setFade] = useState(true);
 
   const reviewsToShow = 1;
+
+  useEffect(() => {
+    const heights = reviewsRef.current.map((ref) => ref.offsetHeight);
+    const max = Math.max(...heights);
+    setMaxHeight(max);
+  }, [reviews]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,15 +31,23 @@ const ReviewSlider = () => {
   }, [reviews.length, currentIndex]);
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex + reviewsToShow >= reviews.length ? 0 : prevIndex + reviewsToShow
-    );
+    setFade(false);
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex + reviewsToShow >= reviews.length ? 0 : prevIndex + reviewsToShow
+      );
+      setFade(true);
+    }, 200); 
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? reviews.length - reviewsToShow : prevIndex - reviewsToShow
-    );
+    setFade(false);
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === 0 ? reviews.length - reviewsToShow : prevIndex - reviewsToShow
+      );
+      setFade(true);
+    }, 200); 
   };
 
   const handleAddReviewClick = () => {
@@ -75,10 +92,14 @@ const ReviewSlider = () => {
 
   return (
     <>
-      <div className="review-slider">
+      <div className={`review-slider ${fade ? 'fade-in' : 'fade-out'}`} style={{ height: maxHeight }}>
         <div className="review-content">
-          {reviews.slice(currentIndex, currentIndex + reviewsToShow).map((review) => (
-            <div key={review.id} className="review-card">
+          {reviews.slice(currentIndex, currentIndex + reviewsToShow).map((review, index) => (
+            <div
+              key={review.id}
+              className="review-card"
+              ref={(el) => (reviewsRef.current[index] = el)}
+            >
               <img src={placeholderImage} alt={`${review.name}'s profile`} className="profile-picture" />
               <h3>{review.name}</h3>
               <div className="rating">{renderStars(review.rating)}</div>
@@ -141,5 +162,6 @@ const ReviewSlider = () => {
 };
 
 export default ReviewSlider;
+
 
 
