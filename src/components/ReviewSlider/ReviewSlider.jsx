@@ -1,7 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './ReviewSlider.scss';
 import reviewsData from '~/shared/mock-data-reviews.json';
 import placeholderImage from '@/assets/images/imageProfile.SVG';
+import { ReviewNote } from '../../../modules/reviewFetcher';
+
+
+const REWIEW_BASE = 'https://test-2fc1a-default-rtdb.europe-west1.firebasedatabase.app/notes.json';
 
 const gradients = [
   'linear-gradient(147deg, #e9d02d 0%, #f30661 74%)',
@@ -23,13 +27,21 @@ const ReviewSlider = () => {
   const [newReviewName, setNewReviewName] = useState('');
   const [newReviewText, setNewReviewText] = useState('');
   const [newReviewRating, setNewReviewRating] = useState(1);
-  // const [maxHeight, setMaxHeight] = useState(0);
   const [currentGradient, setCurrentGradient] = useState(gradients[0]);
   const reviewsRef = useRef([]);
   const [fade, setFade] = useState(true);
 
   const reviewsToShow = 1;
 
+  useEffect(() => {
+    const reviewNote = new ReviewNote(REWIEW_BASE);
+    reviewNote.fetchNotes().then(fetchedReviews => {
+      if (fetchedReviews) {
+        const reviewsArray = Object.values(fetchedReviews);
+        setReviews(prevReviews => [...prevReviews, ...reviewsArray]);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -70,8 +82,9 @@ const ReviewSlider = () => {
     setIsFormVisible(true);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
+    const reviewNote = new ReviewNote(REWIEW_BASE);
     if (newReviewName && newReviewText) {
       const newReview = {
         id: reviews.length + 1,
@@ -83,6 +96,13 @@ const ReviewSlider = () => {
       setNewReviewName('');
       setNewReviewText('');
       setNewReviewRating(1);
+      
+      await reviewNote.submitNote({
+        name: newReviewName,
+        text: newReviewText,
+        rating: newReviewRating,
+      });
+  
       setIsFormVisible(false);
     }
   };
