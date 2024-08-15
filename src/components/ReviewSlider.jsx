@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './ReviewSlider.scss';
-import reviewsData from './data/reviews.json';
-import placeholderImage from '../images/imageProfile.png';
+import reviewsData from '../../shared/mock-data-reviews.json';
+import placeholderImage from '../assets/images/imageProfile.png';
 
 const gradients = [
   'linear-gradient(147deg, #e9d02d 0%, #f30661 74%)',
