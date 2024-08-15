@@ -1,7 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './ReviewSlider.scss';
 import reviewsData from './data/reviews.json';
-import placeholderImage from '../images/imageProfile.png'; 
+import placeholderImage from '../images/imageProfile.png';
+
+const gradients = [
+  'linear-gradient(147deg, #e9d02d 0%, #f30661 74%)',
+  'linear-gradient(147deg, #ff9966 0%, #ff5e62 74%)',
+  'linear-gradient(147deg, #00c6ff 0%, #0072ff 74%)',
+  'linear-gradient(147deg, #7b4397 0%, #dc2430 74%)',
+  'linear-gradient(147deg, #ff7e5f 0%, #feb47b 74%)',
+  'linear-gradient(147deg, #43cea2 0%, #185a9d 74%)',
+  'linear-gradient(147deg, #00b09b 0%, #96c93d 74%)',
+  'linear-gradient(147deg, #ff512f 0%, #dd2476 74%)',
+  'linear-gradient(147deg, #56ccf2 0%, #2f80ed 74%)',
+  'linear-gradient(147deg, #834d9b 0%, #d04ed6 74%)'
+];
 
 const ReviewSlider = () => {
   const [reviews, setReviews] = useState(reviewsData);
@@ -11,6 +24,7 @@ const ReviewSlider = () => {
   const [newReviewText, setNewReviewText] = useState('');
   const [newReviewRating, setNewReviewRating] = useState(1);
   const [maxHeight, setMaxHeight] = useState(0);
+  const [currentGradient, setCurrentGradient] = useState(gradients[0]);
   const reviewsRef = useRef([]);
   const [fade, setFade] = useState(true);
 
@@ -37,7 +51,8 @@ const ReviewSlider = () => {
         prevIndex + reviewsToShow >= reviews.length ? 0 : prevIndex + reviewsToShow
       );
       setFade(true);
-    }, 200); 
+      changeBackground();
+    }, 200);
   };
 
   const handlePrev = () => {
@@ -47,7 +62,13 @@ const ReviewSlider = () => {
         prevIndex === 0 ? reviews.length - reviewsToShow : prevIndex - reviewsToShow
       );
       setFade(true);
-    }, 200); 
+      changeBackground();
+    }, 200);
+  };
+
+  const changeBackground = () => {
+    const randomIndex = Math.floor(Math.random() * gradients.length);
+    setCurrentGradient(gradients[randomIndex]);
   };
 
   const handleAddReviewClick = () => {
@@ -66,7 +87,7 @@ const ReviewSlider = () => {
       setReviews((prevReviews) => [...prevReviews, newReview]);
       setNewReviewName('');
       setNewReviewText('');
-      setNewReviewRating(1); 
+      setNewReviewRating(1);
       setIsFormVisible(false);
     }
   };
@@ -74,7 +95,7 @@ const ReviewSlider = () => {
   const handleCancelClick = () => {
     setNewReviewName('');
     setNewReviewText('');
-    setNewReviewRating(1); 
+    setNewReviewRating(1);
     setIsFormVisible(false);
   };
 
@@ -92,7 +113,10 @@ const ReviewSlider = () => {
 
   return (
     <>
-      <div className={`review-slider ${fade ? 'fade-in' : 'fade-out'}`} style={{ height: maxHeight }}>
+      <div
+        className={`review-slider ${fade ? 'fade-in' : 'fade-out'}`}
+        style={{ height: maxHeight, background: currentGradient }}
+      >
         <div className="review-content">
           {reviews.slice(currentIndex, currentIndex + reviewsToShow).map((review, index) => (
             <div
@@ -162,6 +186,9 @@ const ReviewSlider = () => {
 };
 
 export default ReviewSlider;
+
+
+
 
 
 
