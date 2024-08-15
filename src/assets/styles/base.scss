@@ -23,5 +23,6 @@ html {
 body {
     font-family: $main-font;
     background: $main-background-gradient;
-    position: relative; 
+    position: relative;
+    overflow: hidden;
 }

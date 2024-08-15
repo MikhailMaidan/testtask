@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './ReviewSlider.scss';
 import reviewsData from '~/shared/mock-data-reviews.json';
-import placeholderImage from '@/assets/images/imageProfile.png';
+import placeholderImage from '@/assets/images/imageProfile.SVG';
 
 const gradients = [
   'linear-gradient(147deg, #e9d02d 0%, #f30661 74%)',
@@ -23,26 +23,26 @@ const ReviewSlider = () => {
   const [newReviewName, setNewReviewName] = useState('');
   const [newReviewText, setNewReviewText] = useState('');
   const [newReviewRating, setNewReviewRating] = useState(1);
-  const [maxHeight, setMaxHeight] = useState(0);
+  // const [maxHeight, setMaxHeight] = useState(0);
   const [currentGradient, setCurrentGradient] = useState(gradients[0]);
   const reviewsRef = useRef([]);
   const [fade, setFade] = useState(true);
 
   const reviewsToShow = 1;
 
-  useEffect(() => {
-    const heights = reviewsRef.current.map((ref) => ref.offsetHeight);
-    const max = Math.max(...heights);
-    setMaxHeight(max);
-  }, [reviews]);
+  // useEffect(() => {
+  //   const heights = reviewsRef.current.map((ref) => ref.offsetHeight);
+  //   const max = Math.max(...heights);
+  //   setMaxHeight(max);
+  // }, [reviews]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 5000);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     handleNext();
+  //   }, 5000);
 
-    return () => clearInterval(interval);
-  }, [reviews.length, currentIndex]);
+  //   return () => clearInterval(interval);
+  // }, [reviews.length, currentIndex]);
 
   const handleNext = () => {
     setFade(false);
@@ -115,7 +115,7 @@ const ReviewSlider = () => {
     <>
       <div
         className={`review-slider ${fade ? 'fade-in' : 'fade-out'}`}
-        style={{ height: maxHeight, background: currentGradient }}
+        style={{background: currentGradient }}
       >
         <div className="review-content">
           {reviews.slice(currentIndex, currentIndex + reviewsToShow).map((review, index) => (
@@ -124,10 +124,12 @@ const ReviewSlider = () => {
               className="review-card"
               ref={(el) => (reviewsRef.current[index] = el)}
             >
-              <img src={placeholderImage} alt={`${review.name}'s profile`} className="profile-picture" />
-              <h3>{review.name}</h3>
+              <div className="review-slider__profile-picture">
+                <img src={placeholderImage} alt={`${review.name}'s profile`}/>
+              </div>
+              <div className="review-slider__name">{review.name}</div>
               <div className="rating">{renderStars(review.rating)}</div>
-              <p>{review.text}</p>
+              <p className="review-slider__text">{review.text}</p>
             </div>
           ))}
         </div>

@@ -1,0 +1,12 @@
+@import '@/assets/styles/reset.scss';
+@import '@/assets/styles/variables.scss';
+@import '@/assets/styles/base.scss';
+@import '@/assets/styles/fonts.scss';
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
