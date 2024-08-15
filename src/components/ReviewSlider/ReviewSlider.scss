@@ -4,6 +4,7 @@
 
 
 .review-slider {
+  top: -20%;
   width: 30%;
   padding: 10rem;
   border-radius: 24rem;
@@ -73,15 +74,17 @@
   }
 
   &__text {
-    font-size: 16rem;
+    font-size: 18rem;
     color: white;
     font-family: "Manrope-Regular", sans-serif;
+    margin-top: 20rem;
+    
   }
 
   .prev,
   .next {
     position: absolute;
-    top: 40%;
+    top: 30%;
     width: 40rem;
     height: 40rem;
     background: $light-background; 

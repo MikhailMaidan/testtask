@@ -30,19 +30,14 @@ const ReviewSlider = () => {
 
   const reviewsToShow = 1;
 
-  // useEffect(() => {
-  //   const heights = reviewsRef.current.map((ref) => ref.offsetHeight);
-  //   const max = Math.max(...heights);
-  //   setMaxHeight(max);
-  // }, [reviews]);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     handleNext();
-  //   }, 5000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 5000);
 
-  //   return () => clearInterval(interval);
-  // }, [reviews.length, currentIndex]);
+    return () => clearInterval(interval);
+  }, [reviews.length, currentIndex]);
 
   const handleNext = () => {
     setFade(false);
