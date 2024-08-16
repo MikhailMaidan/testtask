@@ -4,10 +4,15 @@ import reviewsData from '~/shared/mock-data-reviews.json';
 import placeholderImage from '@/assets/images/imageProfile.svg';
 import { ReviewNote } from '../../../modules/reviewFetcher';
 
-
+/*
+* Вынести переменную в модуль констант
+*/
 // const REWIEW_BASE = 'https://test-2fc1a-default-rtdb.europe-west1.firebasedatabase.app/notes.json';
 const REWIEW_BASE = 'https://testtask-68730-default-rtdb.europe-west1.firebasedatabase.app//notes.json';
 
+/*
+* Вынести переменные в variables.scss
+*/
 const gradients = [
   'linear-gradient(147deg, #e9d02d 0%, #f30661 74%)',
   'linear-gradient(147deg, #ff9966 0%, #ff5e62 74%)',
@@ -22,6 +27,10 @@ const gradients = [
 ];
 
 const ReviewSlider = () => {
+
+  /*
+  * Можно было оформить переменные в один объект с полями
+  */
   const [reviews, setReviews] = useState(reviewsData);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -34,6 +43,9 @@ const ReviewSlider = () => {
 
   const reviewsToShow = 1;
 
+  /*
+  * Объединить логику useEffect'ов
+  */
   useEffect(() => {
     const reviewNote = new ReviewNote(REWIEW_BASE);
     reviewNote.fetchNotes().then(fetchedReviews => {
@@ -83,6 +95,9 @@ const ReviewSlider = () => {
     setIsFormVisible(true);
   };
 
+   /*
+  * Вынести логику в отдельный модуль
+  */
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const reviewNote = new ReviewNote(REWIEW_BASE);
@@ -115,6 +130,9 @@ const ReviewSlider = () => {
     setIsFormVisible(false);
   };
 
+  /*
+  * Вынести логику рендеринга звезд в отдельный модуль
+  */
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
@@ -127,6 +145,16 @@ const ReviewSlider = () => {
     return stars;
   };
 
+  /*
+  * Разнести логику по компонентам
+  * Логику слайдер в один
+  * Логика добавления нового комментария в другой
+  * UI компоненты раскидать по другим UI компонентам, отдельно вынести кнопки UI компоненты
+  * Адаптивы
+  * Можно вынести сам ReviewSlider в отдельный компонент
+  * Сделать обработку ошибок на поля
+  * Loader при загрузке и выгрузке reviews
+  */
   return (
     <>
       <div
