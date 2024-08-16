@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import './ReviewSlider.scss';
 import reviewsData from '~/shared/mock-data-reviews.json';
-import placeholderImage from '@/assets/images/imageProfile.SVG';
+import placeholderImage from '@/assets/images/imageProfile.svg';
 import { ReviewNote } from '../../../modules/reviewFetcher';
 
 
