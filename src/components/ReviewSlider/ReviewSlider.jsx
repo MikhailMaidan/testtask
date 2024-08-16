@@ -5,7 +5,8 @@ import placeholderImage from '@/assets/images/imageProfile.svg';
 import { ReviewNote } from '../../../modules/reviewFetcher';
 
 
-const REWIEW_BASE = 'https://test-2fc1a-default-rtdb.europe-west1.firebasedatabase.app/notes.json';
+// const REWIEW_BASE = 'https://test-2fc1a-default-rtdb.europe-west1.firebasedatabase.app/notes.json';
+const REWIEW_BASE = 'https://testtask-68730-default-rtdb.europe-west1.firebasedatabase.app//notes.json';
 
 const gradients = [
   'linear-gradient(147deg, #e9d02d 0%, #f30661 74%)',
